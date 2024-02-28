@@ -16,6 +16,7 @@ SRCS = main.c \
 		swap.c \
 		push.c \
 		sort_three.c \
+		utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:30:44 by vabaud            #+#    #+#             */
-/*   Updated: 2024/02/26 17:28:52 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/02/28 12:16:24 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_stack	*ft_stacknew(int content)
 	if (!new)
 		return (NULL);
 	new->value = content;
+    new->pos = 0;
+    new->cost = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -37,6 +39,21 @@ void stack_add_front(t_stack **stack, t_stack *new)
 	*stack = new;
 }
 
+void	stack_add_back(t_stack **stack, t_stack *new)
+{
+	t_stack	*tmp;
+
+    tmp = *stack;
+	if (!*stack)
+		*stack = new;
+	else
+	{
+		while (tmp->next != NULL)
+            tmp = tmp->next;
+		tmp->next = new;
+	}
+}
+
 t_stack *init_stack(int ac, char **av)
 {
     int i;
@@ -48,7 +65,7 @@ t_stack *init_stack(int ac, char **av)
         if (i == 1)
             stack = ft_stacknew(ft_atoi(av[i]));
         else
-            stack_add_front(&stack, ft_stacknew(ft_atoi(av[i])));
+            stack_add_back(&stack, ft_stacknew(ft_atoi(av[i])));
         i++;
     }
     return (stack);

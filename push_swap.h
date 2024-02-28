@@ -6,7 +6,7 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:44:41 by vabaud            #+#    #+#             */
-/*   Updated: 2024/02/27 14:28:05 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/02/28 12:17:47 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 typedef struct s_stack
 {
 	int				value;
+	int				pos;
+    int cost;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -48,6 +50,9 @@ int					is_dup(char **str);
 void				args_check(char **av);
 t_stack				*ft_stacknew(int content);
 void				stack_add_front(t_stack **stack, t_stack *new);
+void				stack_add_back(t_stack **stack, t_stack *new);
 t_stack				*init_stack(int ac, char **av);
+int					stack_size(t_stack **stack);
+void				init_pos_and_cost(t_stack **stack);
 
 #endif

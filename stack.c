@@ -6,7 +6,7 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:30:44 by vabaud            #+#    #+#             */
-/*   Updated: 2024/02/28 12:16:24 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/02/29 13:19:15 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack	*ft_stacknew(int content)
 	new->value = content;
     new->pos = 0;
     new->cost = 0;
+    new->target = NULL;
 	new->next = NULL;
 	return (new);
 }

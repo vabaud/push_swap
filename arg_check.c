@@ -6,7 +6,7 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:55:00 by vabaud            #+#    #+#             */
-/*   Updated: 2024/02/27 16:16:49 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:57:56 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	is_num(char *str)
 			return (0);
 		i++;
 	}
-    if (ft_atoi(str) > INT_MAX || ft_atoi(str) < INT_MIN)
-    {
-        printf("da2\n");
-        return (0);
-    }
+	if (ft_atoi(str) > INT_MAX || ft_atoi(str) < INT_MIN)
+	{
+		printf("da2\n");
+		return (0);
+	}
 	return (1);
 }
 
@@ -45,7 +45,7 @@ int	is_dup(char **str)
 		while (str[j])
 		{
 			if (j != i && (ft_atoi(str[i]) == ft_atoi(str[j])))
-                return 0;
+				return (0);
 			j++;
 		}
 		i++;
@@ -53,17 +53,25 @@ int	is_dup(char **str)
 	return (1);
 }
 
-void args_check(char **av)
+void	args_check(int ac, char **av)
 {
-    int i;
+	int	i;
 
-    i = 1;
-    while (av[i])
+	i = 1;
+    if (ac == 2)
     {
-        if (!is_num(av[i]))
-            exit(EXIT_FAILURE);
-        i++;
+        i = 0;
     }
-    if (!is_dup(av))
-        exit(EXIT_FAILURE);
+	while (av[i])
+	{
+		if (!is_num(av[i]))
+        {
+			exit(EXIT_FAILURE);
+        }
+		i++;
+	}
+	if (!is_dup(av))
+    {
+		exit(EXIT_FAILURE);
+    }
 }

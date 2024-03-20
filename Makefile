@@ -1,4 +1,5 @@
-TARGET = push_swap
+NAME = push_swap
+BONUS = checker
 
 CC = gcc
 
@@ -17,11 +18,13 @@ SRCS = main.c \
 		push.c \
 		sort_three.c \
 		utils.c \
+		sort.c \
+		bonus.c \
 
 OBJS = $(SRCS:.c=.o)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBFT_INCLUDES) -o $(TARGET) $(OBJS) $(LIBFT)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(LIBFT_INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(LIBFT_INCLUDES) -c $< -o $@
@@ -30,8 +33,8 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 
 re: fclean all
 
-all: $(TARGET)`
+all: $(NAME)

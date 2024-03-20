@@ -6,7 +6,7 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:44:41 by vabaud            #+#    #+#             */
-/*   Updated: 2024/02/29 16:11:10 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/20 12:55:02 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack
 	int				value;
 	int				pos;
 	int				cost;
+	int				above_median;
 	struct s_stack	*target;
 	struct s_stack	*next;
 }					t_stack;
@@ -51,15 +52,32 @@ void				sort_three(t_stack **stack);
 
 int					is_num(char *str);
 int					is_dup(char **str);
-void				args_check(char **av);
+void				args_check(int ac, char **av);
 
 t_stack				*ft_stacknew(int content);
 void				stack_add_front(t_stack **stack, t_stack *new);
 void				stack_add_back(t_stack **stack, t_stack *new);
 t_stack				*init_stack(int ac, char **av);
 int					stack_size(t_stack **stack);
-void				init_cost(t_stack **stack_a, t_stack **stack_b);
-void				near_value(t_stack *stack, t_stack **stack_b);
+void				init_cost_a(t_stack **stack_a, t_stack **stack_b);
+void				init_cost_b(t_stack **stack_a, t_stack **stack_b);
+void				target_value_a(t_stack *stack, t_stack **stack_b);
+void				target_value_b(t_stack *stack, t_stack **stack_a);
 t_stack				*max(t_stack **stack);
+t_stack				*min(t_stack **stack);
+t_stack				*cheapest(t_stack **stack);
+int					is_sort(t_stack **stack);
+void				which_sort(t_stack **stack_a, t_stack **stack_b);
+void				sort(t_stack **stack_a, t_stack **stack_b);
+void				go_top(t_stack **stack_a, t_stack *cheap, char stack_name);
+void				move_a_to_b(t_stack **stack_a, t_stack **stack_b);
+void				move_b_to_a(t_stack **stack_a, t_stack **stack_b);
+void				init_pos(t_stack **stack_a);
+void				do_rrr(t_stack **stack_a, t_stack **stack_b,
+						t_stack *cheap);
+void				do_rr(t_stack **stack_a, t_stack **stack_b, t_stack *cheap);
+void				clear_near(t_stack **stack);
+void				min_on_top(t_stack **stack);
+void checker(int ac, char **av);
 
 #endif

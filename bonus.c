@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 19:44:25 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 14:59:22 by vabaud           ###   ########.fr       */
+/*   Created: 2024/03/20 12:50:02 by vabaud            #+#    #+#             */
+/*   Updated: 2024/03/20 18:13:08 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
-{
-	int	tmp;
+// int	main(int ac, char **av)
+// {
+// 	t_stack	*stack_a;
+// 	t_stack	*stack_b;
+// 	char	*line;
 
-	tmp = (*stack)->value;
-	(*stack)->value = (*stack)->next->value;
-	(*stack)->next->value = tmp;
-}
-
-void	swap_a(t_stack **stack)
-{
-	swap(stack);
-	ft_printf("sa\n");
-}
-
-void	swap_b(t_stack **stack)
-{
-	swap(stack);
-	ft_printf("sb\n");
-}
-
-void	swap_a_and_b(t_stack **stack_a, t_stack **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	ft_printf("ss\n");
-}
+// 	if (ac < 2)
+// 		return (0);
+// 	if (ac == 2)
+// 	{
+// 		av = ft_split(av[1], ' ');
+// 	}
+// 	args_check(ac, av);
+// 	stack_a = init_stack(ac, av);
+// 	stack_b = NULL;
+    
+// 	while (get_next_line(0))
+// 	{
+// 	}
+// 	return (0);
+// }

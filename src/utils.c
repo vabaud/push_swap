@@ -6,11 +6,11 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:32:58 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 15:00:19 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/21 12:32:23 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_stack	*max(t_stack **stack)
 {
@@ -201,4 +201,33 @@ void	min_on_top(t_stack **stack)
 		else
 			reverse_rotate_a(stack);
 	}
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack	*head;
+
+	head = *stack;
+	while (head)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+}
+
+void	free_double_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (array == NULL)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

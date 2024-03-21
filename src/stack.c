@@ -6,11 +6,11 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 19:30:44 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 11:22:01 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/20 20:49:14 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_stack	*ft_stacknew(int content)
 {

@@ -6,23 +6,28 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 08:39:10 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 14:58:44 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/20 23:55:51 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*temp;
+	t_stack	*tmp;
+	t_stack	*tail;
+	t_stack	*before_tail;
 
-	temp = *stack;
-	while (temp->next->next != NULL)
-	{
-		temp = temp->next;
-	}
-	stack_add_front(stack, ft_stacknew(temp->next->value));
-	temp->next = NULL;
+	tail = *stack;
+	before_tail = *stack;
+	while (tail->next)
+		tail = tail->next;
+	tmp = *stack;
+	while (before_tail->next && before_tail->next->next)
+		before_tail = before_tail->next;
+	*stack = tail;
+	(*stack)->next = tmp;
+	before_tail->next = NULL;
 }
 
 void	reverse_rotate_a(t_stack **stack)

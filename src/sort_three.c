@@ -6,11 +6,11 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 13:35:10 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/19 19:08:36 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/21 12:05:58 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	sort_three(t_stack **stack)
 {
@@ -19,6 +19,8 @@ void	sort_three(t_stack **stack)
 
 	bottom = (*stack)->next->next;
 	middle = (*stack)->next;
+    if (is_sort(stack))
+        return ;
 	if ((*stack)->value < middle->value && middle->value > bottom->value
 		&& bottom->value > (*stack)->value)
 	{

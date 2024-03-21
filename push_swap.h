@@ -6,7 +6,7 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 10:44:41 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 12:55:02 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/20 23:18:11 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void				swap_a_and_b(t_stack **stack_a, t_stack **stack_b);
 
 void				push_a(t_stack **stack_a, t_stack **stack_b);
 void				push_b(t_stack **stack_a, t_stack **stack_b);
+void				push(t_stack **stack_a, t_stack **stack_b, char name);
 
 void				sort_three(t_stack **stack);
 
@@ -78,6 +79,12 @@ void				do_rrr(t_stack **stack_a, t_stack **stack_b,
 void				do_rr(t_stack **stack_a, t_stack **stack_b, t_stack *cheap);
 void				clear_near(t_stack **stack);
 void				min_on_top(t_stack **stack);
-void checker(int ac, char **av);
+void				swap_op(char *line, t_stack **stack_a, t_stack **stack_b);
+void				rot_or_rev_op(char *line, t_stack **stack_a,
+						t_stack **stack_b);
+void				push_op(char *line, t_stack **stack_a, t_stack **stack_b);
+void				operation(char *line, t_stack **stack_a, t_stack **stack_b);
+int					main(int ac, char **av);
+void				free_stack(t_stack **stack);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:35:10 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 12:04:36 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/21 12:05:53 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	which_sort(t_stack **stack_a, t_stack **stack_b)
 {
@@ -35,7 +35,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 		move_a_to_b(stack_a, stack_b);
 		clear_near(stack_a);
 	}
-	sort_three(stack_a);
+    sort_three(stack_a);
 	while (*stack_b)
 	{
 		init_pos(stack_a);

@@ -6,11 +6,11 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:55:00 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 14:57:56 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/21 10:01:46 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	is_num(char *str)
 {
@@ -27,7 +27,6 @@ int	is_num(char *str)
 	}
 	if (ft_atoi(str) > INT_MAX || ft_atoi(str) < INT_MIN)
 	{
-		printf("da2\n");
 		return (0);
 	}
 	return (1);
@@ -66,12 +65,14 @@ void	args_check(int ac, char **av)
 	{
 		if (!is_num(av[i]))
         {
+            ft_printf("Error\n");
 			exit(EXIT_FAILURE);
         }
 		i++;
 	}
 	if (!is_dup(av))
     {
+        ft_printf("Error\n");
 		exit(EXIT_FAILURE);
     }
 }

@@ -6,22 +6,24 @@
 /*   By: vabaud <vabaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:51:19 by vabaud            #+#    #+#             */
-/*   Updated: 2024/03/20 14:58:55 by vabaud           ###   ########.fr       */
+/*   Updated: 2024/03/20 23:55:54 by vabaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	rotate(t_stack **stack)
 {
-	t_stack	*temp;
+	t_stack	*tmp;
+	t_stack	*tail;
 
-	temp = *stack;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = ft_stacknew((*stack)->value);
-	temp->next->next = NULL;
+	tmp = *stack;
+	tail = *stack;
 	*stack = (*stack)->next;
+	while (tail && tail->next != NULL)
+		tail = tail->next;
+	tmp->next = NULL;
+	tail->next = tmp;
 }
 
 void	rotate_a(t_stack **stack)

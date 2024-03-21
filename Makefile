@@ -1,40 +1,57 @@
 NAME = push_swap
-BONUS = checker
-
 CC = gcc
+RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+LIBFTDIR = LIBFT/
+OBJ_DIR = obj/
+BONUS = checker
+SRC_DIR = src/
 
-CFLAGS = -Wall -Wextra -Werror
+SRC_1 = src/main.c \
 
-LIBFT_INCLUDES = -I LIBFT/
+SRC_2 = src/stack.c \
+		src/arg_check.c \
+		src/rotate.c \
+		src/reverse_rotate.c \
+		src/swap.c \
+		src/push.c \
+		src/sort_three.c \
+		src/utils.c \
+		src/sort.c \
 
-LIBFT = LIBFT/libft.a
+BONUS_SRC = bonus.c \
+			
 
-SRCS = main.c \
-		stack.c \
-		arg_check.c \
-		rotate.c \
-		reverse_rotate.c \
-		swap.c \
-		push.c \
-		sort_three.c \
-		utils.c \
-		sort.c \
-		bonus.c \
+OBJ_1 = ${SRC_1:.c=.o}
+OBJ_2 = ${SRC_2:.c=.o}
 
-OBJS = $(SRCS:.c=.o)
+BONUS_OBJ =${BONUS_SRC:.c=.o}
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBFT_INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
+INCLUDE = LIBFT/libft.a
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(LIBFT_INCLUDES) -c $< -o $@
+.c.o:
+	${CC} -c $< -o ${<:.c=.o}
+
+${NAME}: ${OBJ_1} ${OBJ_2}
+	make -C $(LIBFTDIR)
+	${CC} ${FLAGS} ${OBJ_1} ${OBJ_2} -o ${NAME} ${INCLUDE}
+
+${BONUS}: ${OBJ_2} ${BONUS_OBJ} 
+	make -C $(LIBFTDIR)
+	${CC} ${FLAGS} ${BONUS_OBJ} ${OBJ_2} -o ${BONUS} ${INCLUDE}
+
+all: ${NAME} ${BONUS}
+
+bonus: ${BONUS} 
 
 clean:
-	rm -f $(OBJS)
+	${RM} ${OBJ_1} ${OBJ_2} ${BONUS_OBJ} ${NAME} ${BONUS}
+	@cd $(LIBFTDIR) && $(MAKE) clean
 
 fclean: clean
-	rm -f $(NAME)
+	${RM} ${NAME}
+	@cd $(LIBFTDIR) && $(MAKE) fclean
 
-re: fclean all
+re: clean all
 
-all: $(NAME)
+.PHONY: all clean fclean re bonus
